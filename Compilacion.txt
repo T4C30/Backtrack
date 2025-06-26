@@ -1,0 +1,29 @@
+javac -g -d compilados -cp ".;lib\sqlite-jdbc-3.49.1.0.jar" --module-path "lib" --add-modules "javafx.fxml,javafx.controls,javafx.graphics,javafx.media,javafx.base,javafx.swing" *.java
+
+
+
+java -classpath "compilados;compilados\lib\sqlite-jdbc-3.49.1.0.jar" --module-path "compilados\lib" --add-modules "javafx.fxml,javafx.controls,javafx.graphics,javafx.media,javafx.base,javafx.swing" Main
+
+
+gradle clean
+gradle shadowJar
+
+
+jpackage \
+  --name BacktrackApp \
+  --input /home/USER/Escritorio/BackTrack/Backtrack/app/build/libs \
+  --main-jar app-all.jar \
+  --main-class com.T4C30.Backtrack.Lanzar \
+  --dest /home/USER/Escritorio/BackTrack/Backtrack/app/build/dist \
+  --type app-image \
+  --java-options "-Dfile.encoding=UTF-8 -Dprism.order=sw -Djavafx.verbose=true -Dprism.verbose=true" \
+  --module-path /home/USER/Descargas/javafx-sdk-24.0.1/lib \
+  --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.web,javafx.media,javafx.swing,java.sql \
+  --verbose
+
+  cp /home/USER/Descargas/javafx-sdk-24.0.1/lib/libprism_sw.so /home/santiago/Escritorio/BackTrack/Backtrack/app/build/dist/BacktrackApp/lib/runtime/lib/
+  cp /home/USER/Descargas/javafx-sdk-24.0.1/lib/libglass.so /home/santiago/Escritorio/BackTrack/Backtrack/app/build/dist/BacktrackApp/lib/runtime/lib/
+cp /home/USER/Descargas/javafx-sdk-24.0.1/lib/libglassgtk3.so /home/santiago/Escritorio/BackTrack/Backtrack/app/build/dist/BacktrackApp/lib/runtime/lib/
+cp /home/USER/Descargas/javafx-sdk-24.0.1/lib/libjavafx_font.so /home/santiago/Escritorio/BackTrack/Backtrack/app/build/dist/BacktrackApp/lib/runtime/lib/
+cp /home/USER/Descargas/javafx-sdk-24.0.1/lib/libjavafx_font_freetype.so /home/santiago/Escritorio/BackTrack/Backtrack/app/build/dist/BacktrackApp/lib/runtime/lib/
+cp /home/USER/Descargas/javafx-sdk-24.0.1/lib/libjavafx_font_pango.so /home/santiago/Escritorio/BackTrack/Backtrack/app/build/dist/BacktrackApp/lib/runtime/lib/
